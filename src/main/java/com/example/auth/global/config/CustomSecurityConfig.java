@@ -21,15 +21,7 @@ public class CustomSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(AbstractHttpConfigurer::disable);
-        http.cors(c-> c.configurationSource(request -> {
-            var corsConfiguration = new CorsConfiguration();
-            corsConfiguration.addAllowedHeader("*");
-            corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE","OPTIONS"));
-            corsConfiguration.setAllowedOrigins(List.of("*"));
-            return corsConfiguration;
-        }));
         http.userDetailsService(authService);
-
         http.authorizeHttpRequests(req->
                 req.requestMatchers("/api/v1/auth")
                         .permitAll()

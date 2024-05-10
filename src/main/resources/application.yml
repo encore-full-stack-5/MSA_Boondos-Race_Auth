@@ -1,8 +1,16 @@
 spring:
   application:
-    name: auth
+    name: auth-service
 server:
-  port: 9009
+  port: 0
 jwt:
   secret: fdag32fdsavv32few89vbbafdsbaugubdsag8904fdsafdvcxcbrea
   expiration: 86400000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.0.33:8761/eureka/
+  instance:
+    instance-id: auth-service
+    prefer-ip-address: true
+    ip-address: 192.168.0.16
