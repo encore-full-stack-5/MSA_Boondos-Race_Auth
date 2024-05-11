@@ -23,7 +23,7 @@ public class CustomSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.userDetailsService(authService);
         http.authorizeHttpRequests(req->
-                req.requestMatchers("/api/v1/auth")
+                req.requestMatchers("/api/v1/auth", "/api/v1/auth/parse")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
